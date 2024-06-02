@@ -1,28 +1,31 @@
-import {BrowserRouter,Route,Routes}from 'react-router-dom';
-import {RecoilRoot} from 'recoil';
-import Landing from './Modal/Landing';
-import Home from './Pages/Home';
-import Login from './Pages/Login';
-import Signup from './Pages/Signup';
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Home from "./Pages/Home"
+import Auth from "./Pages/Auth";
+import Landing from "./Modal/Landing";
+import { RecoilRoot } from "recoil";
+import Cart from "./Pages/Cart";
 
+function App() {
 
-export default function App(){
-  return(
+  return (
+    <>
     <RecoilRoot>
-      <BrowserRouter>
-      <Routes>
+    <BrowserRouter>
+     <Routes>
+     <Route path="/" element={<Landing/>} />
 
-        <Route path='/' element={<Landing />}></Route>
-        <Route path='home' element={<Home />}></Route>
-        <Route path='login' element={<Login />}></Route>
-        <Route path='signup' element={<Signup />}></Route>
+      <Route path="home" element={<Home/>} />
+      <Route path="cart" element={<Cart/>} />
 
-        
+      <Route path="auth" element={<Auth/>} />
 
-
-
-      </Routes>
-      </BrowserRouter>
+     </Routes>
+     
+     </BrowserRouter>
     </RecoilRoot>
+
+    </>
   )
 }
+
+export default App

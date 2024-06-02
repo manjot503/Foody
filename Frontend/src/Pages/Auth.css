@@ -1,0 +1,44 @@
+.formcenter{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.form{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px 40px;
+   width: 100%;
+   max-width: 300px;
+   
+}
+.forminput{
+    padding: 10px;
+    width: 100%;
+    max-width: 270px;
+    border-radius: 10px 20px;
+    
+  
+}
+.forminput:hover{
+    background-color: #f0f0f0;
+}
+.formbutton{
+    padding: 8px 14px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px 40px;
+    cursor: pointer;
+  background-color:orangered;
+  border-color: orangered;
+
+  height: 3rem;
+  font-size: 1rem;
+}
+.formlink{
+    text-decoration: none;
+    color: black;
+}
+.formp{
+    cursor: pointer;
+}
