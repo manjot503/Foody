@@ -40,6 +40,7 @@ userRouter.post("/signup",async(req,res)=>{
         })
      const token = jwt.sign(response._id.toHexString(),process.env.SECRET)
      return res.json({
+name :response.username,
         token:token
      })
     } catch (error) {
