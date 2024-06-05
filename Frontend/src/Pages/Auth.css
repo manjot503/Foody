@@ -31,7 +31,7 @@
     cursor: pointer;
   background-color:orangered;
   border-color: orangered;
-margin-top: 15px;
+margin-top: 20px;
   height: 3rem;
   font-size: 1rem;
 }
@@ -40,5 +40,28 @@ margin-top: 15px;
     color: black;
 }
 .formp{
+    cursor: pointer;
+}
+.formotp{
+    text-align: center;
+    justify-content: space-between;
+    margin-left: 1.7rem;
+   margin-top: 20px;
+    padding:center;
+    align-items: center;
+    width: 2rem;
+   height: 3rem;
+   border-radius: 8px;
+background-color: transparent;
+}
+.error{
+    color: red;
+}
+.formicons{
+    display: flex;
+    justify-content: end;
+    margin-top: -30px;
+    margin-right: 20px;
+    font-size: 25px;
     cursor: pointer;
 }

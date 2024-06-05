@@ -4,6 +4,9 @@ import Auth from "./Pages/Auth";
 import Landing from "./Modal/Landing";
 import { RecoilRoot } from "recoil";
 import Cart from "./Pages/Cart";
+import Email from "./Forgot/Email";
+import Otp from "./Forgot/Otp";
+import ResetPassword from "./Forgot/ResetPassword";
 
 function App() {
 
@@ -18,6 +21,12 @@ function App() {
       <Route path="/cart" element={<Cart/>} />
 
       <Route path="/auth" element={<Auth/>} />
+      <Route path="/email" element={<Email  />} />
+      <Route path="/otp" element={<Otp/>} />
+      <Route path="/reset" element={<ResetPassword/>} />
+
+
+
 
      </Routes>
      

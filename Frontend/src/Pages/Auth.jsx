@@ -1,14 +1,15 @@
 import { useState } from "react";
 import './Auth.css';
 import { Link, useNavigate } from "react-router-dom";
+import { IoEyeSharp } from "react-icons/io5";
 import axios from "axios";
+
 axios.defaults.baseURL = "http://localhost:5300/";
 
 const Auth = () => {
   const navigate = useNavigate();
   const [type, setType] = useState("login");
-  const [success, setSuccess] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors,setErrors]  = useState("")
   const [auth, setAuth] = useState({
     username: '',
     email: '',
@@ -18,34 +19,14 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors("");
-    setSuccess("");
-
-    
-    //   if (type === "signup" &&!(username)) {
-    //     setErrors("Username must be at least 2 characters");
-    //     return;
-    //   }
-    
-
-    // if (!auth.email) {
-    //   setErrors("Email is required");
-    //   return;
-    // } else if (!/\S+@\S+\.\S+/.test(auth.email)) {
-    //   setErrors("Email address is invalid");
-    //   return;
-    // }
-
-    // if (!auth.password) {
-    //   setErrors("Password is required");
-    //   return;
-    // } else if (auth.password.length < 5) {
-    //   setErrors("Password must be at least 5 characters long");
-    //   return;
-    // }
-
+    let errors={}
+  if (password.length < 5) {
+      errors.password = "Password must be at least 6 characters long";
+  }
+setErrors(errors)
     const requestData = { username, email, password };
 
+   if(Object.keys(errors).length === 0){
     try {
       let response;
       if (type === "signup") {
@@ -72,7 +53,7 @@ const Auth = () => {
       if (type === "signup") {
         alert("Email already exists");
       } else {
-        alert("User not found");
+        alert("Useer not found");
 
       }
       setAuth({
@@ -81,6 +62,7 @@ const Auth = () => {
        password: "" 
       });
     }
+   }
   };
 
   return (
@@ -92,13 +74,15 @@ const Auth = () => {
              <h1>Signup</h1>}
         
         
-        {type === 'signup' ?(
-          <LabeledInput type="text" placeholder="Username" id="Username" onChange={(e) => setAuth({ ...auth, username: e.target.value })} errors={errors} success={success} />
-        ):null} 
+        {
+        type === 'signup' ?(
+          <LabeledInput type="text" placeholder="Username" id="Username" onChange={(e) => setAuth({ ...auth, username: e.target.value })} />
+        ):null}
+
+
        
-        <LabeledInput type="email" placeholder="Email" id="Email" onChange={(e) => setAuth({ ...auth, email: e.target.value })} errors={errors} success={success} />
-        <LabeledInput type="password" placeholder="Password" id="Password" onChange={(e) => setAuth({ ...auth, password: e.target.value })} errors={errors} success={success} />
-        
+        <LabeledInput type="email" placeholder="Email" id="Email" onChange={(e) => setAuth({ ...auth, email: e.target.value })} />
+        <LabeledInput type="password" placeholder="Password" id="Password" onChange={(e) => setAuth({ ...auth, password: e.target.value })}  error={errors.password}  /><span className="formicons"><IoEyeSharp /></span>
         
         
         {type === 'login' ? <Button type="submit" name="Login" /> : <Button type="submit" name="Signup" />}
@@ -112,13 +96,12 @@ const Auth = () => {
   );
 };
 
-function LabeledInput({ type, placeholder, id, onChange, errors, success }) {
+function LabeledInput({ type, placeholder, id, onChange,error}){
   return (
     <label htmlFor={id}>
       <h3>{id}</h3>
       <input className="forminput" type={type} placeholder={placeholder} id={id} onChange={onChange} required />
-      {errors && <p className="error">{errors}</p>}
-      {success && <p className="success">{success}</p>}
+      {error && <span className='error'>{error}</span>}
     </label>
   );
 }
